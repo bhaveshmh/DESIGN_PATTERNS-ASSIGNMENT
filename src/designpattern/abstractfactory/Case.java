@@ -3,7 +3,7 @@ package designpattern.abstractfactory;
 /**
  * Created by IntelliJ IDEA.
  * User: goyalamit
- * Date: Jul 18, 2011
+ * Date: Jul 18, 2011l̥
  * Time: 6:48:07 PM
  * To change this template use File | Settings | File Templates.
  */
