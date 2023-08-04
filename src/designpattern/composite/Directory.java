@@ -7,9 +7,10 @@ import java.util.List;
  * User: joelrosario
  * Date: Jul 19, 2011
  * Time: 9:18:51 PM
- * To change this template use pre_refactoring.File | Settings | pre_refactoring.File Templates.
+ * To change this template use pre_refactoring.File | Settings |
+ * pre_refactoring.File Templates.
  */
-public class Directory {
+public class Directory implements Data {
     private final String name;
     private final List<File> files;
     private final List<Directory> directories;
@@ -85,6 +86,10 @@ public class Directory {
         directories.add(directory);
     }
 
+    public void add(File file) {
+        files.add(file);
+    }
+
     private boolean fileExists(String name, Directory directoryToSearch) {
         for (File file : directoryToSearch.getFiles()) {
             if (file.getName().equals(name)) {
@@ -138,4 +143,26 @@ public class Directory {
     public Directory getParent() {
         return parent;
     }
+
+    @Override
+    public void open() {
+        System.out.println(this.name);
+        for (Directory directory : directories) {
+            System.out.println("----In Directory " + directory.name);
+            for (File file : directory.files) {
+                System.out.print("--------");
+                file.open();
+            }
+        }
+
+        for (File file : files) {
+
+            file.open();
+        }
+    }
+
+    public void remove(Data data) {
+        directories.remove(data);
+    }
+
 }
