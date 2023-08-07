@@ -1,7 +1,6 @@
 package designpattern.adapter.thirdparty;
 
-import net.media.training.designpattern.adapter.Employee;
-
+import designpattern.adapter.Employee;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Stack;

@@ -4,16 +4,14 @@ public class PhoneMaker {
 
     public Case buildPhone(String phoneType) {
 
-        Case phoneCase;
+        PhoneMakerFactory phone;
         if (phoneType.equals("Android")) {
-            PhoneMakerFactory phone = new AndroidPhoneFactory();
-            phoneCase = phone.assemblePhoneCase(phone.createMotherBoard());
-
+            phone = new AndroidPhoneFactory();
         } else {
-            PhoneMakerFactory phone = new AndroidPhoneFactory();
-            phoneCase = phone.assemblePhoneCase(phone.createMotherBoard());
+            phone = new AndroidPhoneFactory();
         }
 
-        return phoneCase;
+        return phone.assemblePhoneCase(phone.createMotherBoard());
+
     }
 }
