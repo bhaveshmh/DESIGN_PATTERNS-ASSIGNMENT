@@ -2,9 +2,15 @@ package designpattern.adapter;
 
 import designpattern.adapter.thirdparty.ThirdPartyLeaveRecord;
 
-public class LeaveRecordAdapter implements LeaveRecord {
+public class ThirdPartyAdapter implements LeaveRecord {
+    ThirdPartyLeaveRecord leaveRecord;
 
-    ThirdPartyLeaveRecord leaveRecord = new ThirdPartyLeaveRecord();
+    ThirdPartyAdapter(ThirdPartyLeaveRecord leaveRecord){
+        this.leaveRecord = leaveRecord;
+
+    }
+
+    // ThirdPartyLeaveRecord leaveRecord = new ThirdPartyLeaveRecord();
 
     public String getMostAbsentEmployee() {
         return leaveRecord.getMostAbsentEmployee().getName();
