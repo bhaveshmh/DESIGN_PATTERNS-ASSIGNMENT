@@ -1,5 +1,3 @@
-package designpattern.adapter.thirdparty;
-
 import designpattern.adapter.Employee;
 import java.util.Hashtable;
 import java.util.Map;

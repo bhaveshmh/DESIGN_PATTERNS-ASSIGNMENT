@@ -1,5 +1,6 @@
 package designpattern.builder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,22 +11,23 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class PeopleDataSource {
-    public static String toXml(Person person) {
-        return "<Person id=\"" + person.getId() + "\" name=\"" + person.getName() + "\">" +
-                "<Address><City>" + person.getCity() + "</City><Country>" + person.getCountry()
-                + "</Country></Address>" +
-                "</Person>";
+    public static String getPeopleXml(List<Person> persons) {
+        XMLBuilder xmlBuilder = new XMLBuilder();
+        xmlBuilder.addHeader("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+        xmlBuilder.addTag("People", "number", String.valueOf(persons.size())).endTag();
+        for (Person person : persons) {
+            xmlBuilder.addTag("Person", "id", String.valueOf(person.getId())).addAttrib("name", person.getName()).endTag();
+            xmlBuilder.addTag("Address").addTag("City").addValue(person.getCity()).closeTag("City");
+            xmlBuilder.addTag("Country").addValue(person.getCountry()).closeTag("Country").closeTag("Address").closeTag("Person");
+        }
+        xmlBuilder.closeTag("People");
+        return xmlBuilder.build().getXMLstring();
     }
 
-    public static String getPeopleXml(List<Person> persons) {
-        String finalXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
-        finalXML += "<People number=\"" + persons.size() + "\">";
-
-        for (Person person : persons) {
-            finalXML += toXml(person);
-        }
-
-        finalXML += "</People>";
-        return finalXML;
+    public static void main(String[] args) {
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person("Bhavesh",1,"Mumbai","Thane"));
+        persons.add(new Person("Hrithik",2,"Mumbai","Goregoan"));
+        System.out.println(getPeopleXml(persons));
     }
 }
