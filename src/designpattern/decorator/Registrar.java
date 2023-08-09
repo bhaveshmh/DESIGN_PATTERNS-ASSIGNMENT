@@ -1,6 +1,5 @@
 package designpattern.decorator;
 
-
 /**
  * Created by IntelliJ IDEA.
  * User: goyalamit
@@ -12,6 +11,12 @@ public class Registrar {
 
     public boolean evaluate(Application theApp, Criteria criteria) {
         return criteria.evaluate(theApp);
+    }
+
+    public static void main(String[] args) {
+        Criteria criteria = new TOEFL(new GREEval(new GPAEval()));
+        Application myapp = new Application(9, 1455, 120);
+        criteria.evaluate(myapp);
     }
 
 }

@@ -1,4 +1,3 @@
-package designpattern.observer;
 
 /**
  * Created by IntelliJ IDEA.

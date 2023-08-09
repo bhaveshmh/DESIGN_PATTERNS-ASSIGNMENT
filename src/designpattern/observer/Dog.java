@@ -1,4 +1,3 @@
-package designpattern.observer;
 
 /**
  * Created by IntelliJ IDEA.
@@ -7,7 +6,7 @@ package designpattern.observer;
  * Time: 10:13:47 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Dog {
+public class Dog implements Character {
     private boolean outdoors;
     private boolean feelingWarm;
     private boolean feelingTired;
@@ -41,5 +40,9 @@ public class Dog {
 
     public boolean isFeelingTired() {
         return feelingTired;
+    }
+
+    public boolean isIndoors() {
+        return !isOutdoors();
     }
 }
